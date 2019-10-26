@@ -1,0 +1,128 @@
+﻿@model IEnumerable<CollegeManagementSystem.Models.Subject>
+@using CollegeManagementSystem.Models;
+@using CollegeManagementSystem.DataSeedModel
+@{
+    ViewBag.Title = "Students With Course Information";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+<div class="pcoded-content">
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>STUDENT WITH COURSE INFO TABLE</h5>
+
+                        </div>
+                        <div class="card-block">
+                            <div class="table-responsive dt-responsive">
+                                <table id="complex-header" class="table table-striped table-bordered nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Course</th>
+                                            <th>No of Subject</th>
+                                            <th>No of Teacher</th>
+                                            <th>No Of Student</th>
+                                            <th>ACTION</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{int serialNo = 1;}
+                                        @{int NoOfTeacher = 0;}
+                                        @{int NoOfStudent = 0;}
+                                        @{int NoOfSubject = 0;}
+                                        @foreach (var item in Model.Select(x => x.Course).Distinct())
+                                        {
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @(serialNo++)
+                                                    </td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+
+                                                    @if (item.Id > 0)
+                                                    {
+                                                        NoOfTeacher = 0;
+                                                        NoOfStudent = 0;
+                                                        NoOfSubject = 0;
+                                                        using (var _context = new SchoolCMSContext())
+                                                        {
+
+                                                            var subjectObj = _context.Subjects.Where(p => p.CourseId == item.Id).ToList();
+                                                            NoOfSubject = subjectObj.Count();
+                                                            if (subjectObj.Count() > 0)
+                                                            {
+                                                                foreach (var sub in subjectObj)
+                                                                {
+                                                                    int teacherObjCount = _context.Teachers.Where(p => p.Id == sub.TeacherId).ToList().Count();
+                                                                    NoOfTeacher = NoOfTeacher + teacherObjCount;
+
+                                                                    int studentObjCount = _context.Students.Where(p => p.SubjectId == sub.Id).ToList().Count();
+                                                                    NoOfStudent = NoOfStudent + studentObjCount;
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>
+                                                            @NoOfSubject
+                                                        </td>
+                                                        <td>
+                                                            @NoOfTeacher
+                                                        </td>
+                                                        <td>
+                                                            @NoOfStudent
+                                                        </td>
+                                                    }
+                                                    @if (NoOfSubject > 0)
+                                                    {
+                                                        <td> @NoOfSubject</td>
+                                                    }
+                                                    @if (NoOfTeacher > 0)
+                                                    {
+                                                        <td> @NoOfTeacher</td>
+                                                    }
+                                                    @if (NoOfStudent > 0)
+                                                    {
+                                                        <td> @NoOfStudent</td>
+                                                    }
+                                                    <td>
+                                                        @Html.ActionLink("View Course Student Average Grade ", "CourseStudentAverageGrade", new { id = item.Id })
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div id="styleSelector">
+        </div>
+    </div>
+</div>

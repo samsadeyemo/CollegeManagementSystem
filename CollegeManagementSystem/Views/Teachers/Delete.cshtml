@@ -1,0 +1,95 @@
+﻿@model CollegeManagementSystem.Models.Teacher
+
+@{
+                /**/
+
+                ViewBag.Title = "Delete";
+                Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+<div>
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="page-body">
+                        <div class="container">
+                            <div>
+                                <div class="card">
+                                    <br />
+                                    <div class="card-block">
+                                        <div class="row invoive-info">
+                                            <div class="col-md-4 col-xs-12 invoice-client-info">
+
+                                                <h5>Are you sure you want to delete this?</h5>
+                                                <h6 style="color:royalblue">TEACHER DETAIL :</h6>
+
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="table-responsive">
+                                                    <table class="table  invoice-detail-table">
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <h6>Name</h6>
+                                                                    <p>    @Html.DisplayFor(model => model.Name) </p>
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h6>Birthday</h6>
+                                                                    <p>    @Html.DisplayFor(model => model.Birthday) </p>
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <h6>Salary</h6>
+                                                                    <p>    @Html.DisplayFor(model => model.Salary) </p>
+                                                                </td>
+
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-sm-12 invoice-btn-group text-center">
+
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="form-actions no-color">
+                                                <input type="submit" value="Delete" class="btn btn-default" /> |
+                                                @Html.ActionLink("Back to List", "Index")
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="styleSelector">
+            </div>
+        </div>
+    </div>
+</div>

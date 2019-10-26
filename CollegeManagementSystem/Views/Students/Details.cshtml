@@ -1,0 +1,96 @@
+﻿@model CollegeManagementSystem.Models.Student
+
+@{
+                /**/
+
+                ViewBag.Title = "Details";
+                Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+                    <div class="container">
+                        <div>
+                            <div class="card">
+                                <br />
+                                <div class="card-block">
+                                    <div class="row invoive-info">
+                                        <div class="col-md-4 col-xs-12 invoice-client-info">
+                                            <h6 style="color:royalblue">STUDENT DETAIL :</h6>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="table-responsive">
+                                                <table class="table  invoice-detail-table">
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <h6>Student Name</h6>
+                                                                <p>  @Html.DisplayFor(model => model.FullName) </p>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <h6>Registraton Number</h6>
+                                                                <p>  @Html.DisplayFor(model => model.RegNumber) </p>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <h6>Birthday</h6>
+                                                                <p> @Html.DisplayNameFor(model => model.Birthday) </p>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <h6>Subject</h6>
+                                                                <p>   @Html.DisplayFor(model => model.Subject.Name) </p>
+                                                            </td>
+                                                            <td>
+                                                                <h6>Grade</h6>
+                                                                <p>   @Html.DisplayFor(model => model.Grade.GradeName) </p>
+                                                            </td>
+
+                                                            <td>
+                                                                <h6>Grade Score</h6>
+                                                                <p>   @Html.DisplayFor(model => model.Grade.GradeScore) </p>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-sm-12 invoice-btn-group text-center">
+                                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                                    @Html.ActionLink("Back to List", "Index")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="styleSelector">
+        </div>
+    </div>
+</div>
