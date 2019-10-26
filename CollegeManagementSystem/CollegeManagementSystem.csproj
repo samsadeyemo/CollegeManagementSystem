@@ -145,10 +145,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CollegeManagementSystemDB.mdf" />
-    <Content Include="App_Data\CollegeManagementSystemDB_log.ldf">
-      <DependentUpon>CollegeManagementSystemDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1208,7 +1204,9 @@
     <Content Include="Views\Subjects\StudentsWithCourseInfo.cshtml" />
     <Content Include="Views\Subjects\CourseStudentAverageGrade.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
